@@ -1,0 +1,81 @@
+################################################################
+# Checkout https://github.com/durdn/cfg/blob/master/.gitconfig #
+################################################################
+
+# core {{{
+[core]
+    editor = vim
+#}}}
+
+
+# color {{{
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+
+[color "branch"]
+    current = red reverse
+    local = blue
+    remote = green
+
+[color "diff"]
+    meta = yellow
+    frag = magenta
+    old = red bold
+    new = green
+    plain = white
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+# }}}
+
+
+# alias {{{
+[alias]
+    # list current status
+    st = status -bs
+    sn = status -uno -bs # don't show untracked
+    # i am doing work
+    ai = add --interactive
+    ci = commit
+    cm = commit -m
+    cma = commit -a -m
+    cp = cherry-pick
+    # navigation
+    co = checkout
+    br = branch 
+    bra = branch -ra
+    # look at histroy
+    lf = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat # log with list of changed files
+    l = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate # log in oneline
+    lg = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph # log with graph
+    ld = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative # log with relative date
+    fl = log -u # log with file diff
+    # show diff
+    diff = diff --word-diff
+    d = diff --word-diff
+    dc = diff --cached
+    # list modified files in last commit
+    dl = "!git ll -1"
+    # diff last commit
+    dlc = diff --cached HEAD^
+    # stash
+    sl = stash list
+    sa = stash apply
+    ss = stash save
+    sp = stash pop
+    # look for something?
+    grep = grep -Ii
+    gr = grep -Ii
+    # grep on filename
+    f = "!git ls-files | grep -i"
+    # list remotes
+    rem = "!git config -l | grep remote.*url | tail -n +2"
+    # use 'git h <command>' for help, use 'git la' to list aliases
+    h = help #... <git-command-in-question>
+    # list all aliases
+    la = "!sed -n '/\\[alias\\]/,/\\}\\}\\}/p' ~/cfg/mygitconfig | sed -e 's/^\\[alias\\]//' -e 's/^#\\s\\}\\}\\}//' | sed -r \"s/^[[:space:]]+([[:alnum:]]+)[[:space:]]=[[:space:]]([^#]+)/\t$(tput setaf 1)\\1$(tput sgr0)\t\\2/\" | sed -r \"s/^[[:space:]]+(#.+)/\t\\1/\" | sed -r \"s/(#\\s.+)/$(tput setaf 2)\\1$(tput sgr0)/ \" | less -R" 
+# }}}
