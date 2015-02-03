@@ -10,7 +10,7 @@
 # user {{{
 [user]
 	name = Jim Jing
-	email = {u'verified': True, u'email': u'jimjing131313@gmail.com', u'primary': True}
+	email = jimjing131313@gmail.com
 # }}}
 
 # color {{{
