@@ -33,3 +33,12 @@ alias gla="git la"
 
 ## tmux ##
 alias ntm="tmux new -s"
+
+## Quickly check and edit this file ##
+alias editba="vim ~/.bash_aliases && source ~/.bashrc"
+
+## ROS Related ##
+alias catm="catkin_make && source devel/setup.bash"
+
+## Vim Related ##
+alias v="vim"
